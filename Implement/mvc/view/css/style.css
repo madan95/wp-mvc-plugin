@@ -1,0 +1,251 @@
+  .form-group>label{
+    display: block;
+  }
+
+
+.div-table {
+  display: table;
+  width: 100%;
+  background-color: #eee;
+  border: 1px solid #666666;
+  border-spacing: 5px; /* cellspacing:poor IE support for  this */
+}
+.div-table-row {
+  display: table-row;
+  width: auto;
+  clear: both;
+}
+.div-table-col {
+  float: left; /* fix for  buggy browsers */
+  display: table-column;
+  width: 200px;
+  background-color: #ccc;
+}
+
+
+.cover, .tr_proxy{
+  border: 2px solid grey;
+padding: 12px;
+}
+
+.input-fields{
+  padding: 8px;
+}
+
+.btn{
+  margin: 6px;
+}
+
+/***bootgrid table with edit on node **/
+.inline-block{
+  display: inline-block;
+}
+
+/*** Using flex to make table responsive ***/
+
+
+
+.Table {
+  overflow-x: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: column nowrap;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border: 1px solid #f2f2f2;
+  font-size: 1rem;
+  margin: 0.5rem;
+  line-height: 1.5;
+}
+.Table-header {
+  display: none;
+}
+@media (min-width: 800px) {
+  .Table-header {
+    font-weight: 700;
+    background-color: #f2f2f2;
+  }
+}
+.Table-row {
+  width: 100%;
+}
+.Table-row:nth-of-type(even) {
+  background-color: #f2f2f2;
+}
+.Table-row:nth-of-type(odd) {
+  background-color: #ffffff;
+}
+@media (min-width: 1000px) {
+  .Table-row {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-flow: row nowrap;
+        -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
+  }
+  .Table-row:nth-of-type(even) {
+    background-color: #ffffff;
+  }
+  .Table-row:nth-of-type(odd) {
+    background-color: #f2f2f2;
+  }
+}
+.Table-row-item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row nowrap;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-flex-basis: 0;
+      -ms-flex-preferred-size: 0;
+          flex-basis: 0;
+  padding: 0.5em;
+  word-break: break-word;
+}
+.Table-row-item:before {
+  content: attr(data-header);
+  width: 30%;
+  font-weight: 700;
+}
+@media (min-width: 1000px) {
+  .Table-row-item {
+    border: 1px solid #ffffff;
+    padding: 0.5em;
+  }
+  .Table-row-item:before {
+    content: none;
+  }
+}
+
+.u-Flex-grow1 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.u-Flex-grow2 {
+  -webkit-box-flex: 2;
+  -webkit-flex-grow: 2;
+      -ms-flex-positive: 2;
+          flex-grow: 2;
+}
+
+.u-Flex-grow4 {
+  -webkit-box-flex: 4;
+  -webkit-flex-grow: 4;
+      -ms-flex-positive: 4;
+          flex-grow: 4;
+}
+
+.u-Flex-grow3 {
+  -webkit-box-flex: 3;
+  -webkit-flex-grow: 3;
+      -ms-flex-positive: 3;
+          flex-grow: 3;
+}
+
+.u-Flex-grow5 {
+  -webkit-box-flex: 5;
+  -webkit-flex-grow: 5;
+      -ms-flex-positive: 5;
+          flex-grow: 5;
+}
+
+.u-Flex-grow6 {
+  -webkit-box-flex: 6;
+  -webkit-flex-grow: 6;
+      -ms-flex-positive: 6;
+          flex-grow: 6;
+}
+
+.u-Flex-grow7 {
+  -webkit-box-flex: 7;
+  -webkit-flex-grow: 7;
+      -ms-flex-positive: 7;
+          flex-grow: 7;
+}
+
+.u-Flex-grow8 {
+  -webkit-box-flex: 8;
+  -webkit-flex-grow: 8;
+      -ms-flex-positive: 8;
+          flex-grow: 8;
+}
+
+.u-Flex-grow9 {
+  -webkit-box-flex: 9;
+  -webkit-flex-grow: 9;
+      -ms-flex-positive: 9;
+          flex-grow: 9;
+}
+
+.u-Flex-grow10 {
+  -webkit-box-flex: 10;
+  -webkit-flex-grow: 10;
+      -ms-flex-positive: 10;
+          flex-grow: 10;
+}
+
+
+
+
+
+/* DivTable */
+.divTableWrapper{
+  overflow: auto;
+}
+.divTable{
+	display: table;
+	width: 100%;
+}
+.divTableRow {
+	display: table-row;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+}
+.divTableCell, .divTableHead {
+	border: 1px solid #999999;
+	display: table-cell;
+	padding: 3px 10px;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+	font-weight: bold;
+}
+.divTableFoot {
+	background-color: #EEE;
+	display: table-footer-group;
+	font-weight: bold;
+}
+.divTableBody {
+	display: table-row-group;
+}
+
+
+
+/***Responsive bootgrid table for mobile ***/
+
+.table-responsive{
+  overflow: auto;
+}
+.bootgrid-table{
+  table-layout: auto;
+}
