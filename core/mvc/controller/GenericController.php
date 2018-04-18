@@ -10,7 +10,14 @@ class GenericController implements ControllerInterface{
 
 //By default if no ajax_aciton is index() which shows list of table items
   public function index($request){
+    /*$twig_loader = new Twig_Loader_Filesystem(BASEPATH . '/Implement/mvc/view/models/' . $request['table_name']);
+    $twig = new Twig_Environment($twig_loader);
+*/
     require (BASEPATH . '/Implement/mvc/view/models/'.$request['table_name'].'/index.php');
+
+  /*  echo $twig->render('index.html.twig', array(
+      'content' => $content
+    ));*/
   }
 
   public function getGridData($request){

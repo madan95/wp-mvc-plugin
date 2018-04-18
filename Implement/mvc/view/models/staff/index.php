@@ -88,6 +88,7 @@ $staff_data = array(
   )
 );
 
+/*
 $loader = new Twig_Loader_Array(array(
     'index' => 'Hello {{name}}!',
     'jesus' => 'jesus is the {{what_is_jesus}}'
@@ -95,8 +96,13 @@ $loader = new Twig_Loader_Array(array(
 $twig = new Twig_Environment($loader);
 echo $twig->render('index', array('name' => 'Madan'));
 echo $twig->render('jesus', array('what_is_jesus' => 'god'));
+*/
 
-//Page::createBootgridTable($staff_data);
+//$content = 'HO HO HO';
+
+
+
+Page::createBootgridTable($staff_data);
 /*
 function createBootgridTableTH($table_columns){
   foreach($table_columns as $key => $column){

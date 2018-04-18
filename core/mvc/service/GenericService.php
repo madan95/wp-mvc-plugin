@@ -132,6 +132,12 @@ class GenericService  {
           $this->entity_manager->update($model);
         }else{
           console('middle man to set');
+          $middle_man = $request['parent_table_name'].$request['table_name'];
+          $middle_man = ModelFactory::getModel($middle_man);
+          $middle_man->setValue($request['parent_table_name'].'_id', $request['parent_id']);
+          $middle_man->setValue($request['table_name'].'_id', $request['node_id']);
+          $middle_man->setValue($middle_man->getPrimaryKey(), $this->entity_manager->persist($middle_man));
+          console($middle_man);
         }
         $this->passable_parent = $parent;
       }

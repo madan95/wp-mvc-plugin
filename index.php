@@ -15,7 +15,7 @@ define('PLUGIN_PATH', __FILE__ ); // file path of plugin
 define('SHORT_CODE_NAME', 'view_page'); // name of short-code used in plguin
 define('TABLE_VARIABLES', BASEPATH . '/core/plugin/config/variables.php'); //table variable location
 define('TABLE_PREFIX',  $wpdb->prefix . 'dummy_'); //Prefix of databse + plugin
-
+define('TWIG_TEMPLATE', BASEPATH .'/Implement/mvc/view/');
 
 //Twig / COmposer libaries
 require_once(BASEPATH .'/vendor/autoload.php');

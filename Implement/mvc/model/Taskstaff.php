@@ -1,4 +1,4 @@
 <?php
-class Taskstaff extends BaseModel{
+class Taskstaff extends Base{
 
 } ?>

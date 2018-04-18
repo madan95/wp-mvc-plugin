@@ -56,8 +56,8 @@ $data = array(
 if(isset($request['parent_table_name']) && isset($request['parent_id'])){
   $data['select2'] = array(
     'select2_data_settings' => array(
-        'parent_table_name'=> $parent_table_name,
-        'parent_id' => $parent_id,
+        'parent_table_name'=> $request['parent_table_name'],
+        'parent_id' => $request['parent_id'],
         'table_name' => 'staff',
         'column' => 'display_name',
         'ajax_action' => 'select2'

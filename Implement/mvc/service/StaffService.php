@@ -54,7 +54,7 @@ class StaffService extends GenericService{
 
 
 
-  public function getBootGridData($request){
+  public function getBootGridDataO($request){
 /*    $staff_dao = $this->entity_manager->getDao('staff');
     $bootgrid_data = $staff_dao->getBootGridData($request);
 
@@ -125,11 +125,9 @@ class StaffService extends GenericService{
     }
    }
 
-   public function getGridData($request){
 
-   }
 
-  public function getGridDataO($request){
+  public function getBootGridData($request){
     $table_name = $request['table_name']; //staff
     $current = $request['current'];
     $rowCount = $request['rowCount'];
@@ -153,6 +151,12 @@ class StaffService extends GenericService{
         $row_array['mobile_number'] = $staff->getValue('mobile_number');
         $row_array['phone_number'] = $staff->getValue('phone_number');
 
+        $user = get_user_by('id', $staff->getValue('user_id'));
+          $row_array['user_id'] = $user->ID;
+          $row_array['display_name'] = $user->display_name;
+          $row_array['user_login'] = $user->user_login;
+          $row_array['user_email'] = $user->user_email;
+          
         array_push($data_array, $row_array);
       }
     }else{
@@ -172,6 +176,8 @@ class StaffService extends GenericService{
          $row_array['last_name'] = $staff->getValue('last_name');
          $row_array['mobile_number'] = $staff->getValue('mobile_number');
          $row_array['phone_number'] = $staff->getValue('phone_number');
+
+
 
          array_push($data_array, $row_array);
        }
