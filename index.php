@@ -17,6 +17,10 @@ define('TABLE_VARIABLES', BASEPATH . '/core/plugin/config/variables.php'); //tab
 define('TABLE_PREFIX',  $wpdb->prefix . 'dummy_'); //Prefix of databse + plugin
 
 
+//Twig / COmposer libaries
+require_once(BASEPATH .'/vendor/autoload.php');
+
+
 //Entity Manger
 require_once (BASEPATH .'/core/ORM/EntityManager.php');
 require_once (BASEPATH .'/core/ORM/EntityManagerFactory.php');

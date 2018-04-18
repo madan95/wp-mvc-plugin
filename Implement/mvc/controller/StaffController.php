@@ -19,6 +19,6 @@ class StaffController extends GenericController{
   }
 
   public function createNew($request){
-    $this->service->createNew($request);
+    $this->service->createNewStaff($request);
   }
 }

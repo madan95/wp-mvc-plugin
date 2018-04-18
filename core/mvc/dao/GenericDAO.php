@@ -1,6 +1,6 @@
 <?php
 class GenericDAO{
-
+  protected $entity_manager;
   protected $db;
   protected $persistentClass = '';
   protected $db_table_name = '';
@@ -9,6 +9,8 @@ class GenericDAO{
   protected $columns_with_value = '';
 
   public function __construct($model_class = null){
+    $this->entity_manager = EntityManagerFactory::createEM();
+
     global $wpdb;
     $this->db = $wpdb;
     $this->persistentClass = $model_class;
@@ -83,7 +85,12 @@ class GenericDAO{
        $key_word
      );
     $array_of_model = $this->db->get_results($sql, 'ARRAY_A');
-    return ModelMapper::arrayModelMapper($this->persistentClass, $array_of_model);
+    if(count($array_of_model)>1){
+      return ModelMapper::arrayModelMapper($this->persistentClass, $array_of_model);
+    }else{
+      $column_data_array = $array_of_model[0];
+      return ModelMapper::singleModelMapper($this->persistentClass, $column_data_array);
+    }
   }
 
 

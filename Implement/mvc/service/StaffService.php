@@ -1,6 +1,105 @@
 <?php
 class StaffService extends GenericService{
 
+  public function select2($request){
+  /*  $table_name = $request['table_name'];
+    $parent_table_name = $request['parent_table_name'];
+    $column_to_display = $request['column'];
+    $key_word = $request['search'];
+    $array_models = $this->entity_manager->getAnyMatch($table_name, $key_word);
+    foreach($array_models as $key => $model){
+      $full_address = $model->getValue('first_name');
+      if($full_address == ""){
+        $full_address = 'No Address Given Yet';
+      }
+      $data[] = array('id' => $model->getValue($model->getPrimaryKey()), 'text' => $full_address);
+    }
+    return $data;
+*/
+
+        $users = get_users();
+        foreach($users as $key => $user){
+          $user_display_name = $user->display_name;
+          if($user_display_name == ""){
+            $user_display_name = 'No Display Name Given Yet';
+          }
+          $data[] = array(
+            'id' => $user->ID,
+            'text' => $user_display_name
+          );
+        }
+        return $data;
+  }
+
+
+
+  public function createNewStaff($request){
+    $user_query = new WP_User_Query(array('count_total' => true));
+    $total_user = $user_query->get_total();
+    $user_name = 'user'.($total_user+1);
+    $user_password = 'password';
+    $user_email = '';
+    $user_id = username_exists($user_name);
+    if(!$user_id && email_exists($user_email) == false){
+      $user_id = wp_create_user($user_name, $password, $user_email);
+    }else{
+      echo 'User Already Exists';
+    }
+    //create new staff and set user_id to above value
+    parent::createOrUseExisting($request);
+    $this->passable_model->setValue('user_id', $user_id);
+    $this->entity_manager->update($this->passable_model);
+
+  }
+
+
+
+  public function getBootGridData($request){
+/*    $staff_dao = $this->entity_manager->getDao('staff');
+    $bootgrid_data = $staff_dao->getBootGridData($request);
+
+    $new_user_id = wp_create_user('json2', 'json2', 'json2@gmail.com');
+    console($new_user_id);
+    echo $new_user_id;
+
+    $users = get_users();
+    print_r(get_users());
+    foreach($users as $key => $user){
+      echo $user->roles . '<br>';
+      echo $user->id . '<br>';
+      echo $user->user_login . '<br>';
+      echo $user->user_pass . '<br>';
+      echo $user->user_email . '<br>';
+      echo $user->display_name . '<br>';
+    }
+    return true;
+    */
+    $users = get_users();
+    $data_array = array();
+
+    foreach($users as $key => $user){
+      $temp_array = array();
+      $temp_array['user_id'] = $user->ID;
+      $temp_array['display_name'] = $user->display_name;
+      $temp_array['user_login'] = $user->user_login;
+      $temp_array['user_email'] = $user->user_email;
+
+      $staff = $this->entity_manager->getMatch('staff', 'user_id', $user->ID);
+      $temp_array['staff_id'] = $staff->getValue('staff_id');
+      $temp_array['mobile_number'] = $staff->getValue('mobile_number');
+      $temp_array['phone_number'] = $staff->getValue('phone_number');
+      array_push($data_array, $temp_array);
+    }
+
+    ServiceHelper::createBootGridJSONResponse(
+      $data_array,
+      $request['current'],
+      $request['rowCount'],
+      $bootgrid_data['total']
+    );
+
+  }
+
   public function createNewNew($request){
     if($request['node_id']){
         $model = $this->entity_manager->find($request['table_name'], $request['node_id']);
@@ -26,7 +125,11 @@ class StaffService extends GenericService{
     }
    }
 
-  public function getGridData($request){
+   public function getGridData($request){
+
+   }
+
+  public function getGridDataO($request){
     $table_name = $request['table_name']; //staff
     $current = $request['current'];
     $rowCount = $request['rowCount'];

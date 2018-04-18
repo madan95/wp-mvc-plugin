@@ -1,5 +1,6 @@
 <?php
-$data = array(
+
+$staff_data = array(
   'table_name' => 'staff',
   'table_columns' => array(
     array(
@@ -8,21 +9,38 @@ $data = array(
         'data-column-id'=> 'staff_id',
         'data-sortable' => 'true',
         'data-type' => 'numeric',
-        'data-identifier'=> 'true')
+        'data-identifier'=> 'true',
+        'data-formatter' => 'pca-editable')
     ),
     array(
-      'column_name'=> 'First Name',
+      'column_name' => 'User Id',
       'element_attributes' => array(
-        'data-column-id'=> 'first_name',
+        'data-column-id' => 'user_id',
+        'data-formatter' => 'pca-editable'
+      )
+    ),
+    array(
+      'column_name'=> 'Display Name',
+      'element_attributes' => array(
+        'data-column-id'=> 'display_name',
         'data-sortable' => 'true',
-        'data-formatter'=>'pca-editable')
+        'data-formatter' => 'pca-editable'
+        )
       ),
     array(
-      'column_name'=> 'Last Name',
+      'column_name'=> 'User Login',
       'element_attributes' => array(
-        'data-column-id'=> 'last_name',
+        'data-column-id'=> 'user_login',
         'data-sortable' => 'true',
-        'data-formatter'=>'pca-editable')
+        'data-formatter' => 'pca-editable'
+        )
+      ),
+      array(
+        'column_name' => 'User Email',
+        'element_attributes' => array(
+          'data-column-id' => 'user_email',
+          'data-formatter' => 'pca-editable'
+        )
       ),
     array(
       'column_name'=> 'Mobile Number',
@@ -65,13 +83,20 @@ $data = array(
       'table_name' => 'staff',
       'primary_key' => 'staff_id',
       'sort' => array('staff_id'=> 'desc'),
-      'ajax_action' => 'getGridData'
+      'ajax_action' => 'getBootGridData'
     )
   )
 );
 
-return $data;
+$loader = new Twig_Loader_Array(array(
+    'index' => 'Hello {{name}}!',
+    'jesus' => 'jesus is the {{what_is_jesus}}'
+));
+$twig = new Twig_Environment($loader);
+echo $twig->render('index', array('name' => 'Madan'));
+echo $twig->render('jesus', array('what_is_jesus' => 'god'));
 
+//Page::createBootgridTable($staff_data);
 /*
 function createBootgridTableTH($table_columns){
   foreach($table_columns as $key => $column){

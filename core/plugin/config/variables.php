@@ -151,10 +151,12 @@ $db_staff = array(
     array('field_name' =>'first_name', 'field_type' => 'varchar(255)'),
     array('field_name' =>'last_name', 'field_type' => 'varchar(255)'),
     array('field_name' =>'mobile_number', 'field_type' => 'varchar(255)'),
-    array('field_name' =>'phone_number', 'field_type' => 'varchar(255)')
+    array('field_name' =>'phone_number', 'field_type' => 'varchar(255)'),
+    array('field_name' => 'user_id', 'field_type' => 'bigint(20)', 'field_feature'=>'NULL')
       ),
   'extra' => array(
-    'PRIMARY KEY (staff_id)'
+    'PRIMARY KEY (staff_id)',
+    'FOREGIN KEY (user_id) REFERENCES user(ID) ON DELETE CASCADE'
   ),
 );
 
