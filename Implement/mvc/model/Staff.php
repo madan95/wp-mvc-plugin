@@ -2,7 +2,10 @@
 class Staff extends Base{
 
   public function getFullName(){
-    return $this->getValue('first_name').' '.$this->getValue('last_name');
+    $user = get_user_by('id', $this->getValue('user_id'));
+    return $user->display_name;
+//    $row_array['display_name'] = $user->display_name;
+//    return $this->getValue('first_name').' '.$this->getValue('last_name');
   }
 
   public function getContactNumbers(){
@@ -15,5 +18,6 @@ class Staff extends Base{
   }
   return $number;
 }
+
 
 } ?>

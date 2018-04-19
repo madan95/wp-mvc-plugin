@@ -171,7 +171,7 @@ $task_data = array(
     'table_name' => 'task',
     'bootgrid_settings' => array(
       'ajax' => 'true',
-      'navigation' => '0',
+      'navigation' => '3',
       'sorting' => 'true',
     ),
     'post_return' => array(

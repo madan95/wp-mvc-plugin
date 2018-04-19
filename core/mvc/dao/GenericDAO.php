@@ -48,6 +48,7 @@ class GenericDAO{
     }
     try{
       $this->db->insert($this->db_table_name, $insert_values);
+      console($this->db->insert_id);
       return $this->db->insert_id;
     }catch(Exception $e){
       echo 'Failed Persist ';
@@ -357,6 +358,7 @@ public function getRelatedModel($table_to_search){
   try{
     $sql = Query::joinLeft($table1, $table2, $column_to_search);
     $array_of_model = $this->db->get_results($sql, 'ARRAY_A');
+    console($sql);
   }catch(Exception $e){
     echo 'Failed LEft JOIng';
   }
@@ -365,6 +367,33 @@ public function getRelatedModel($table_to_search){
   foreach($array_of_model as $key => $value){
     $temp_model = ModelFactory::getModel($this->persistentClass);
     $temp_model->setProperties($value);
+    array_push($array_of_model_obj, $temp_model);
+  }
+  return $array_of_model_obj;
+}
+
+
+
+public function getRelatedModelWithWhere($table_to_search, $where_column, $where_value){
+  $column_to_search = $this->primary_key;
+  $table1 = $this->db_table_name;
+  $table2 = Helper::convertToTableName($table_to_search);
+  $array_of_model = array();
+
+  try{
+    $sql = Query::joinLeft($table1, $table2, $column_to_search);
+    $where_column_value = $table2.'.'.$where_column;
+    $sql .= Query::getWhereQuery($where_column_value, $where_value);
+    $array_of_model = $this->db->get_results($sql, 'ARRAY_A');
+  }catch(Exception $e){
+    echo 'Failed LEft JOIng';
+  }
+
+  $array_of_model_obj = array();
+  foreach($array_of_model as $key => $value){
+    $temp_model = ModelFactory::getModel($this->persistentClass);
+    $temp_model->setProperties($value);
+
     array_push($array_of_model_obj, $temp_model);
   }
   return $array_of_model_obj;

@@ -13,6 +13,39 @@ class GenericService  {
     $this->entity_manager = EntityManagerFactory::createEM();
   }
 
+  public function getGridData($request){
+    console('gENERIC SERICCE GET GRID DATA');
+    if(!empty($request['parent_table_name'] && !empty($request['parent_id']))){
+      //get location using the parent table relationship
+      $parent_model = $this->entity_manager->find($request['parent_table_name'], $request['parent_id']);
+
+      $array_of_model_obj = $this->entity_manager->getRelatedModelWithWhere($request['table_name'], $request['parent_table_name'].$request['table_name'], $request['parent_table_name'], $request['parent_id']);
+
+      $data_array = array();
+        foreach($array_of_model_obj as $key => $model){
+          $row_array = array();
+          $row_array = $model->getColumnsWithValue();
+
+          $user = get_user_by('id', $model->getValue('user_id'));
+            $row_array['user_id'] = $user->ID;
+            $row_array['display_name'] = $user->display_name;
+            $row_array['user_login'] = $user->user_login;
+            $row_array['user_email'] = $user->user_email;
+            console($row_array);
+          array_push($data_array, $row_array);
+        }
+
+        $json_data = array(
+          'current' => $request['current'],
+          'rowCount' => $request['rowCount'],
+          'rows' => $data_array,
+          'total' => $total
+        );
+
+        wp_send_json(json_encode($json_data));
+     }
+  }
+
 //Default Tables with default row and columns for bootgrid table
   public function getGridDataAll($request){
     $array_of_model = $this->entity_manager->findAll($request['table_name']);
@@ -116,6 +149,7 @@ class GenericService  {
 
   //Create or Use Existing Model
     public function createOrUseExisting($request){
+      $model;
       if($request['node_id']){   //Check if chossen from node
         $model = $this->entity_manager->find($request['table_name'], $request['node_id']);
       }else{
@@ -137,7 +171,6 @@ class GenericService  {
           $middle_man->setValue($request['parent_table_name'].'_id', $request['parent_id']);
           $middle_man->setValue($request['table_name'].'_id', $request['node_id']);
           $middle_man->setValue($middle_man->getPrimaryKey(), $this->entity_manager->persist($middle_man));
-          console($middle_man);
         }
         $this->passable_parent = $parent;
       }

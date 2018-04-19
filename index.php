@@ -64,6 +64,11 @@ require_once (BASEPATH . '/Implement/mvc/view/general/TableViewOLD.php');
 require_once (BASEPATH . '/Implement/mvc/view/general/table/TableView.php');
 require_once (BASEPATH . '/Implement/mvc/view/general/js/ScriptCreator.php');
 
+//Utils to clutter less
+require BASEPATH .'/core/mvc/utils/Utils.php';
+
+
+
 
 //Model and View Helper Classes
 require BASEPATH .'/core/helper/Helper.php'; // Helper methods like converting arrray to class or removing foregin key from array ...

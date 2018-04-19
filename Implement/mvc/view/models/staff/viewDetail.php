@@ -5,21 +5,65 @@ $data = array(
   'table_name' => 'staff',
   'table_columns' => array(
     array(
-    'column_name' => 'Staff ID',
-    'element_attributes' =>  array(
-      'data-column-id'=> 'staff_id',
-      'data-sortable' => 'true',
-      'data-type' => 'numeric',
-      'data-identifier'=> 'true'
-    )
-  ),
-  array(
-    'column_name' => 'First Name',
-    'element_attributes' => array(
-      'data-column-id' => 'first_name',
-      'data-sortable' => 'true'
-    )
-  )
+      'column_name'=> 'Staff Id',
+      'element_attributes' => array(
+        'data-column-id'=> 'staff_id',
+        'data-sortable' => 'true',
+        'data-type' => 'numeric',
+        'data-identifier'=> 'true',
+        'data-formatter' => 'pca-editable')
+    ),
+    array(
+      'column_name' => 'User Id',
+      'element_attributes' => array(
+        'data-column-id' => 'user_id',
+        'data-formatter' => 'pca-editable'
+      )
+    ),
+    array(
+      'column_name'=> 'Display Name',
+      'element_attributes' => array(
+        'data-column-id'=> 'display_name',
+        'data-sortable' => 'true',
+        'data-formatter' => 'pca-editable'
+        )
+      ),
+    array(
+      'column_name'=> 'User Login',
+      'element_attributes' => array(
+        'data-column-id'=> 'user_login',
+        'data-sortable' => 'true',
+        'data-formatter' => 'pca-editable'
+        )
+      ),
+      array(
+        'column_name' => 'User Email',
+        'element_attributes' => array(
+          'data-column-id' => 'user_email',
+          'data-formatter' => 'pca-editable'
+        )
+      ),
+    array(
+      'column_name'=> 'Mobile Number',
+      'element_attributes' => array(
+        'data-column-id'=> 'mobile_number',
+        'data-sortable' => 'true',
+        'data-formatter'=>'pca-editable')
+      ),
+    array(
+      'column_name'=> 'Phone Number',
+      'element_attributes' => array(
+        'data-column-id'=> 'phone_number',
+        'data-sortable' => 'true',
+        'data-formatter'=>'pca-editable')
+      ),
+    array(
+      'column_name'=> 'Commands',
+      'element_attributes' => array(
+        'data-column-id'=> 'commands',
+        'data-sortable' => 'false',
+        'data-formatter'=>'commands')
+      )
 ),
 'buttons' => array(
   'button' => array(
@@ -37,7 +81,7 @@ $data = array(
   'table_name' => 'staff',
   'bootgrid_settings' => array(
     'ajax' => 'true',
-    'navigation' => '0',
+    'navigation' => '3',
     'sorting' => 'true',
   ),
   'post_return' => array(

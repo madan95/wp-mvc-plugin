@@ -10,6 +10,12 @@ class Query{
     return $sql;
   }
 
+  function getWhereQuery($where_column, $where_value){
+    global $wpdb;
+    $sql =  $wpdb->prepare(" WHERE $where_column = %d ", $where_value);
+    return $sql;
+  }
+
   //find()
   function singleSelectQuery($table_name, $primary_key){
     $sql = "SELECT * FROM `$table_name` WHERE `$primary_key` = '%s'";

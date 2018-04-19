@@ -106,5 +106,11 @@ class EntityManager{
     return $model_to_return_dao->getRelatedModel($model_to_search);
   }
 
+  public function getRelatedModelWithWhere($model_to_return, $model_to_search,  $where_column_table, $where_value){
+      $where_column = ModelFactory::getModel($where_column_table)->getPrimaryKey();
+      $model_to_return_dao = DAOFactory::createDAO($model_to_return);
+      return $model_to_return_dao->getRelatedModelWithWhere($model_to_search, $where_column, $where_value);
+  }
+
 }
  ?>

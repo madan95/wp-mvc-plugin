@@ -48,6 +48,12 @@ class GenericController implements ControllerInterface{
       return require (BASEPATH. '/Implement/mvc/view/models/'.$request['table_name'].'/viewDetail.php');
     }
 
+    public function viewCurrent($request){
+      $current_user = wp_get_current_user();
+      $current_user_id = $current_user->ID;
+      return require (BASEPATH. '/Implement/mvc/view/models/'.$request['table_name'].'/viewDetailCurrent.php');
+    }
+
     //Used to create new row on a table
     public function createNew($request){
      $this->service->createOrUseExisting($request);

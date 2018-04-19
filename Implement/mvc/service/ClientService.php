@@ -73,9 +73,8 @@ class ClientService extends  GenericService{
   }
 
 
-  public function createNew($req){
-    $request = Helper::setRequestParameters($req);
-
+  public function createOrUseExisting($request){
+    //$request = Helper::setRequestParameters($req);
     if($request['node_id']){
       //Check if chossen from node
       $model = $this->entity_manager->find($request['table_name'], $request['node_id']);
@@ -83,12 +82,14 @@ class ClientService extends  GenericService{
       $model = ModelFactory::getModel($request['table_name']);
       $model->setValue($model->getPrimaryKey(), $this->entity_manager->persist($model));
     }
+    console($request['booking_id']);
 
     if(!empty($request['booking_id'])){
       $booking = $this->entity_manager->find('booking', $request['booking_id']);
       $customer_id = $booking->getValue('customer_id');
       $parent_table_id = $customer_id;
       $request['parent_id'] = $parent_table_id;
+      console($request['parent_id']);
     }
     console($request['parent_id']);
 

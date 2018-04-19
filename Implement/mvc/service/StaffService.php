@@ -17,7 +17,7 @@ class StaffService extends GenericService{
     return $data;
 */
 
-        $users = get_users();
+    /*    $users = get_users();
         foreach($users as $key => $user){
           $user_display_name = $user->display_name;
           if($user_display_name == ""){
@@ -26,6 +26,18 @@ class StaffService extends GenericService{
           $data[] = array(
             'id' => $user->ID,
             'text' => $user_display_name
+          );
+        }
+*/
+        $staffs = $this->entity_manager->findAll('staff');
+        foreach($staffs as $key => $staff){
+          $staff_display_name = $staff->getFullName();
+          if($staff_display_name == ""){
+            $staff_display_name = 'No Display Name Given Yet';
+          }
+          $data[] = array(
+            'id' => $staff->getValue('staff_id'),
+            'text' => $staff_display_name
           );
         }
         return $data;
@@ -156,7 +168,7 @@ class StaffService extends GenericService{
           $row_array['display_name'] = $user->display_name;
           $row_array['user_login'] = $user->user_login;
           $row_array['user_email'] = $user->user_email;
-          
+
         array_push($data_array, $row_array);
       }
     }else{
