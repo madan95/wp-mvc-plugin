@@ -17,7 +17,7 @@ define('TABLE_VARIABLES', BASEPATH . '/core/plugin/config/variables.php'); //tab
 define('TABLE_PREFIX',  $wpdb->prefix . 'dummy_'); //Prefix of databse + plugin
 define('TWIG_TEMPLATE', BASEPATH .'/Implement/mvc/view/');
 
-//Twig / COmposer libaries
+//Twig / Composer libaries
 require_once(BASEPATH .'/vendor/autoload.php');
 
 

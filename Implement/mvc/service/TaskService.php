@@ -8,11 +8,12 @@ class TaskService extends GenericService{
   }
 
   public function getTotalPrice($request){
-  //  $data_array = $this->getTasksRelatedToBooking($request);
-  //  $json_data= array(
-  //  'total_booking_price' => $data_array['total_booking_price']
-  //  );
-  //  wp_send_json(json_encode($json_data));
+    $data_array = $this->getTasksRelatedToBooking($request);
+    console($data_array);
+    $json_data= array(
+    'total_booking_price' => $data_array['total_booking_price']
+    );
+    wp_send_json(json_encode($json_data));
   }
 
   public function getTasksRelatedToBooking($request){
@@ -167,7 +168,6 @@ class TaskService extends GenericService{
       $temp_array['product_quantity'] = $task->getValue('product_quantity');
       $temp_array['total_task_cost'] = $task_product->getValue('product_cost') * $task->getValue('product_quantity');
       $total_booking_price = $total_booking_price + $temp_array['total_task_cost'];
-
       $temp_array['task_product'] = array(
         'parent_table_name' => 'task',
         'parent_id' => $task->getValue('task_id'),
