@@ -7,8 +7,6 @@ class GenericService  {
   protected $passable_parent;
 
 
-
-
   public function __construct(){
     $this->entity_manager = EntityManagerFactory::createEM();
   }

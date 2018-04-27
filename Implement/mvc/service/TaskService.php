@@ -47,6 +47,8 @@ class TaskService extends GenericService{
       $temp_array['product_quantity'] = $task->getValue('product_quantity');
       $temp_array['total_task_cost'] = $task_product->getValue('product_cost') * $task->getValue('product_quantity');
       $total_booking_price = $total_booking_price + $temp_array['total_task_cost'];
+      console('THE PRICEEEEEEEEEEEE');
+      console($task->getValue('product_quantity'));
 
       $temp_array['task_product'] = array(
         'parent_table_name' => 'task',
