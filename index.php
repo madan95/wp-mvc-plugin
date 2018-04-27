@@ -16,10 +16,11 @@ define('SHORT_CODE_NAME', 'view_page'); // name of short-code used in plguin
 define('TABLE_VARIABLES', BASEPATH . '/core/plugin/config/variables.php'); //table variable location
 define('TABLE_PREFIX',  $wpdb->prefix . 'dummy_'); //Prefix of databse + plugin
 define('TWIG_TEMPLATE', BASEPATH .'/Implement/mvc/view/');
+define('TWIG_TEMPLATE_CORE', BASEPATH .'/core/mvc/view/twig');
 
 //Twig / Composer libaries
 require_once(BASEPATH .'/vendor/autoload.php');
-
+require BASEPATH .'/core/mvc/view/view.php';
 
 //Entity Manger
 require_once (BASEPATH .'/core/ORM/EntityManager.php');
@@ -28,7 +29,6 @@ require BASEPATH .'/core/ORM/Query.php';
 
 
 //Controllers Dependents
-require_once (BASEPATH . '/core/mvc/controller/ControllerInterface.php');
 require_once (BASEPATH . '/core/mvc/controller/GenericController.php');
 require_once (BASEPATH . '/core/mvc/controller/ControllerFactory.php');
 

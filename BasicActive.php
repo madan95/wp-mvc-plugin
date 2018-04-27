@@ -53,6 +53,14 @@ function addScriptAndStyle(){
          wp_enqueue_script('custom-view-script', plugins_url('/Implement/mvc/view/js/viewTemplate.js', __FILE__), array(), null, false);
 
 
+
+
+    wp_enqueue_script('custom-ajax-action-module', plugins_url('/core/mvc/view/js/modules/ajax_action_query.js', __FILE__), array(), null, false);
+
+    //es6 scripts to take over the world
+         wp_enqueue_script('custom-ajax-module', plugins_url('/core/mvc/view/js/main.js', __FILE__), array(), null, false);
+
+
          //set wordpress ajax url in javascript global
          $params = array ( 'ajaxurl' => admin_url( 'admin-ajax.php' ) );
          wp_localize_script( 'custom-script',  'params', $params);

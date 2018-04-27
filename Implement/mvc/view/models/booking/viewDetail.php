@@ -153,6 +153,15 @@ $task_data = array(
       'data-parent_table_name' => 'booking',
       'class' => 'button-bootgrid-action button-bootgrid-action'.$request['unique_id'].'1'
     )
+  ),
+  'button2' => array(
+    'button_name' => 'Snap Shot Order',
+    'element_attributes' => array(
+      'data-ajax_aciton' => 'snapshot_order',
+      'data-table_name' => 'booking',
+      'data-table_id' => $request['id'],
+        'class' => 'ajax_action'
+    )
   )
 ),
 'extra' => array(
@@ -171,7 +180,7 @@ $task_data = array(
     'table_name' => 'task',
     'bootgrid_settings' => array(
       'ajax' => 'true',
-      'navigation' => '3',
+      'navigation' => '0',
       'sorting' => 'true',
     ),
     'post_return' => array(
@@ -186,6 +195,9 @@ $task_data = array(
     )
   )
 );
+//echo 'happy';
+
+//echo View::loadTwig()->render('viewdetail.html.twig', array('content' => 'jesus is way'));
 
 Page::createBootgridTable($booking_data);
 Page::createBootgridTable($task_data);

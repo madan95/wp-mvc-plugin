@@ -1,12 +1,27 @@
 <?php
-class GenericController implements ControllerInterface{
+class GenericController  {
   protected $service;
   protected $entity_manager;
-
 
   public function __construct(){
     $this->entity_manager = EntityManagerFactory::createEM();
   }
+    //Used to create new row on a table
+      public function createNew($request){
+       $this->service->createOrUseExisting($request);
+      }
+      //Use exisiting model
+      public function useExisting($request){
+        $this->service->createOrUseExisting($request);
+      }
+
+      // View specific Item Details
+        public function viewDetail($request){
+          return require (BASEPATH. '/Implement/mvc/view/models/'.$request['table_name'].'/viewDetail.php');
+        }
+
+
+
 
 //By default if no ajax_aciton is index() which shows list of table items
   public function index($request){
@@ -43,10 +58,6 @@ class GenericController implements ControllerInterface{
     return $this->service->getBootGridData($request);
   }
 
-  // View specific Item Details
-    public function viewDetail($request){
-      return require (BASEPATH. '/Implement/mvc/view/models/'.$request['table_name'].'/viewDetail.php');
-    }
 
     public function viewCurrent($request){
       $current_user = wp_get_current_user();
@@ -54,14 +65,6 @@ class GenericController implements ControllerInterface{
       return require (BASEPATH. '/Implement/mvc/view/models/'.$request['table_name'].'/viewDetailCurrent.php');
     }
 
-    //Used to create new row on a table
-    public function createNew($request){
-     $this->service->createOrUseExisting($request);
-    }
-    //Use exisiting model
-    public function useExisting($request){
-      $this->service->createOrUseExisting($request);
-    }
 
 
   public function delete($request){

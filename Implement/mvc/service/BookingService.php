@@ -1,6 +1,34 @@
 <?php
 class BookingService extends GenericService{
 
+  //create new booking and redirect it to booking view
+  public function createNewBooking($request){
+    $model = ModelFactory::getModel($request['table_name']);
+    $model->setValue($model->getPrimaryKey(), $this->entity_manager->persist($model));
+    $current_url= 'http://'.Helper::getCurrentUrl();
+    $url_to_redirect = $current_url.'?table_name=booking&ajax_action=viewdetail&id='.$model->getValue('booking_id');
+    Helper::redirectJS($url_to_redirect);
+    die();
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   public function getBootGridData($request){
     $booking = $this->entity_manager->getDao('booking');
     $bootgrid_data =  $booking->getBootGridData($request);
@@ -58,14 +86,7 @@ class BookingService extends GenericService{
     return require (BASEPATH . '/Implement/mvc/view/models/booking/new.php');
   }
 
-  public function createNew($request){
-    $model = ModelFactory::getModel($request['table_name']);
-    $model->setValue($model->getPrimaryKey(), $this->entity_manager->persist($model));
-    $current_url= 'http://'.Helper::getCurrentUrl();
-    $url_to_redirect = $current_url.'?table_name=booking&ajax_action=viewdetail&id='.$model->getValue('booking_id');
-    Helper::redirectJS($url_to_redirect);
-    die();
-  }
+
 
   public function getGridDataOld2($request){
       $booking = $this->entity_manager->find('booking', $request['id']);
