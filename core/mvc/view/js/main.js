@@ -5,7 +5,8 @@ function init(){
    //   new Action(ajax_action_btns[i]).init();
   //}
 
-    $().ajax_action();
+    //listen to click on ajax_action class
+    $(".ajax_action").ajax_action();
 }
 
-document.addEventListener('DOMContentLoaded', function(event){ init(); });
+document.addEventListener('DOMContentLoaded', function(){ init(); });

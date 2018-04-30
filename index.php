@@ -14,7 +14,10 @@ define('BASEPATH', __DIR__); // Base path of plugin
 define('PLUGIN_PATH', __FILE__ ); // file path of plugin
 define('SHORT_CODE_NAME', 'view_page'); // name of short-code used in plguin
 define('TABLE_VARIABLES', BASEPATH . '/core/plugin/config/variables.php'); //table variable location
+
 define('TABLE_PREFIX',  $wpdb->prefix . 'dummy_'); //Prefix of databse + plugin
+define('TABLE_LOCKED', $wpdb->prefix . 'lock_'); //Prefix of database + lock ( for order to be locked )
+
 define('TWIG_TEMPLATE', BASEPATH .'/Implement/mvc/view/');
 define('TWIG_TEMPLATE_CORE', BASEPATH .'/core/mvc/view/twig');
 
@@ -42,6 +45,9 @@ require_once (BASEPATH . '/core/mvc/dao/GenericDAO.php');
 require_once (BASEPATH . '/core/mvc/dao/DAOFactory.php');
 require_once (BASEPATH . '/core/mvc/dao/DAOHelper.php');
 require_once (BASEPATH . '/core/mvc/dao/BootGridDAO.php');
+
+//iinteract with database
+require_once (BASEPATH. '/Implement/util/dublicate.php');
 
 
 //Model Interface could add to it in ffor futher additoin of funciton of model
@@ -72,6 +78,7 @@ require BASEPATH .'/core/mvc/utils/Utils.php';
 
 //Model and View Helper Classes
 require BASEPATH .'/core/helper/Helper.php'; // Helper methods like converting arrray to class or removing foregin key from array ...
+require BASEPATH .'/core/helper/DatabaseHelper.php'; //common helper features for database
 require_once (BASEPATH . '/Implement/mvc/helper/view/ViewHelper.php');
 require_once (BASEPATH . '/Implement/mvc/view/general/GlobalViewHelper.php');
 
