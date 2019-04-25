@@ -1,0 +1,131 @@
+    /*
+    function edit(element){
+        var tr = jQuery(element).parent().parent();
+        console.log(tr.serialize());
+        if(!tr.hasClass("editing")) {
+            tr.addClass("editing");
+            tr.find("DIV.td").each(function(){
+                if(!jQuery(this).hasClass("action")){
+                    var value = jQuery(this).text();
+                    jQuery(this).text("");
+                    jQuery(this).append('<input type="text" value="'+value+'" />');
+                } else {
+                    jQuery(this).find("BUTTON").text("save");
+                }
+            });
+        } else {
+            console.log(tr.serialize());
+            tr.removeClass("editing");
+            tr.find("DIV.td").each(function(){
+                if(!jQuery(this).hasClass("action")){
+                    var value = jQuery(this).find("INPUT").val();
+                    jQuery(this).text(value);
+                    jQuery(this).find("INPUT").remove();
+                } else {
+                    jQuery(this).find("BUTTON").text("edit");
+                }
+            });
+        }
+    }*/
+
+
+
+    public function displayList3($resultRowArray, $table) {
+     //  print_r($resultRowArray);
+        echo '<br>';
+        //might need to convert to array for reusability of code
+        $array = json_decode(json_encode($resultRowArray), true);
+      //  print_r($array);
+
+        echo '<table>';
+        foreach ($array as $row){
+            $r = array_keys($row); //to get array value using 0 instead of key and value
+            echo '<tr>';
+            foreach ($row as $item) {
+                echo '<td>' . $item . '</td>';
+            }
+            echo '<td><a href="?action=delete&table='.$table.'&id='.$row[$r[0]].'">Delete</a></td>';
+            echo '<td><a href="?action=edit&table='.$table.'&id='.$row[$r[0]].'">Edit</a></td>';
+            echo '</tr>';
+        }
+        echo '</table>';
+    }
+
+    public function displayList2($result, $table_name, $columns, $primary_key){ ?>
+    <div class="table">
+           <div class="thead">
+                    <div class="tr editing">
+                        <div class="td"> 1st</div>
+                         <div class="td"> 2nd</div>
+						 <div class="td"> 1st</div>
+                         <div class="td"> 2nd</div>
+						  <div class="td"> 2nd</div>
+                     </div>
+           </div>
+            <div class="tbody">
+                                <?php
+                                $this->create_form_row($result, $table_name, $columns, $primary_key);
+                                ?>
+            </div>
+    </div>
+        <?php
+    }
+
+
+    public function create_form_row($result, $table_name, $columns, $primary_key){
+$primary_key_value = 0;
+foreach($result as $row){
+    echo '<form class="tr editing">';
+    foreach ($row as $k => $v){
+        if($k == $primary_key){
+            $primary_key_value = $v;
+        }
+        echo '<input class="td" value="'.  $v . '">';
+    }
+    echo '<button class="td " type="button" data-id="'.$primary_key_value.'"  data-table="'.$table_name.'" data-action="delete" >Delete</button>';
+    echo '<a class="td  href="?action=edit&table='.$table_name.'&id='.$primary_key_value.'">Edit</a>';
+    echo '</form>';
+}
+    }
+
+
+    public function createForm2($resultRowArray, $table){
+        $array = json_decode(json_encode($resultRowArray), true);
+        $form = '';
+        foreach ($array as $row) {
+            $r = array_keys($row); //to get array value using 0 instead of key and value
+            $form .= '<form class="tr">';
+            foreach ($row as $item) {
+                $form .= '<div class="td">'.$item.'</div>';
+            }
+            $form .='<div class="td action"><button type="button" onclick="edit(this);">Edit</button></div>';
+            $form .='<div class="td action"><button type="button" onclick="delete (this);">Delete</button></div>';
+            $form .='</form>';
+        }
+        return $form;
+    }
+    public function createForm($resultRowArray, $table){
+        $array = json_decode(json_encode($resultRowArray), true);
+        $form = '';
+        foreach ($array as $row) {
+            $r = array_keys($row); //to get array value using 0 instead of key and value
+            $form .= '<form data-model="'.json_encode($row) .'"id="update_form" action="custom_ajax" method="post">';
+            foreach ($row as $key => $value) {
+                $form .= ''.$key.' <input name="'.$key.'" value="'.$value.'"><br>';
+            }
+            $form .='<input type="hidden" name="table" value="'.$table.'">';
+            $form .= ' <input type="hidden" name="ajaxAction" value="update">';
+             $form .='<input type="button" id="btt" name="ajaxAction" onclick="ajaxPCA(this);" value="update">';
+            $form .='</form>
+            <div id="result"></div>';
+        }
+        return $form;
+    }
+
+    public function editData2($resultRowArray, $table)
+    {
+        echo $this->createForm($resultRowArray, $table);
+    }
+
+
+

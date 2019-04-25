@@ -1,0 +1,25 @@
+$db_create_booking =  array(
+    'form' => array(
+        'table' => 'booking',
+        'fk_table' => array(
+            array(
+                'table' => 'customer',
+                'child_table' => array(
+                    array(
+                    'table' => 'client'
+                    )
+                )
+            )
+        )
+    ),
+    array(
+        'table' => 'task',
+        'fk_table' => array(
+            array(
+                'table' => 'product',
+            ),
+            array(
+                'table' => 'location'
+            )
+        )
+    )

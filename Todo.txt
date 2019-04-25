@@ -1,0 +1,10 @@
++ Simplify Booking Process :
++ Updateable Existing Booking Details/Tables Details
+
++ Modular Select2 Table :
+
++ Draw the line between Modular Setting and Creating Extra on Top
+
++ Fix Front End JavaScript Works
+
++ New Table Looks 

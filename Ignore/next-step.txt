@@ -1,0 +1,28 @@
+ replace table titles and header titles with human readable
+hide id's
+ separate pages for visibilty
+
+Today 
+access and assign tasks through booking, should not have to assign a booking id
+replace id selection with dropdowns/select
+view full job sheet (all info of booking)
+customer info all at booking
+
+
+Thursday/Friday (User Roles)
+ multiple roles per user
+ user of certain role to be able to mark tasks as complete
+ user of certain role to be able to mark booking as complete
+ " " create/edit products
+ " " create/edit locations
+
+Monday (Extra Left)
+report page of outstanding jobs and tasks in total, per user and a report for each user at login
+look into exporting each table to CSV and XML
+Trial software emial to zynk 
+
+task list
+urgent home page 
+
+error validation
+recording transaction

@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<booking>
+ <booking_id>1</booking_id>
+ <start_date>2018-01-10</start_date>
+ <due_date>2018-01-10</due_date>
+ <customer_id>2</customer_id>
+</booking>
+<booking>
+ <booking_id>2</booking_id>
+ <start_date></start_date>
+ <due_date></due_date>
+ <customer_id></customer_id>
+</booking>
+<booking>
+ <booking_id>3</booking_id>
+ <start_date></start_date>
+ <due_date></due_date>
+ <customer_id></customer_id>
+</booking>
+<booking>
+ <booking_id>4</booking_id>
+ <start_date></start_date>
+ <due_date></due_date>
+ <customer_id></customer_id>
+</booking>
+<booking>
+ <booking_id>5</booking_id>
+ <start_date></start_date>
+ <due_date></due_date>
+ <customer_id></customer_id>
+</booking>
+<booking>
+ <booking_id>6</booking_id>
+ <start_date></start_date>
+ <due_date></due_date>
+ <customer_id></customer_id>
+</booking>
+<booking>
+ <booking_id>7</booking_id>
+ <start_date>2018-01-17</start_date>
+ <due_date>2018-01-17</due_date>
+ <customer_id>12</customer_id>
+</booking>
+<booking>
+ <booking_id>8</booking_id>
+ <start_date></start_date>
+ <due_date></due_date>
+ <customer_id>17</customer_id>
+</booking>
+<booking>
+ <booking_id>9</booking_id>
+ <start_date></start_date>
+ <due_date></due_date>
+ <customer_id></customer_id>
+</booking>
+<booking>
+ <booking_id>10</booking_id>
+ <start_date></start_date>
+ <due_date></due_date>
+ <customer_id></customer_id>
+</booking>
+<booking>
+ <booking_id>11</booking_id>
+ <start_date></start_date>
+ <due_date></due_date>
+ <customer_id></customer_id>
+</booking>
+<booking>
+ <booking_id>12</booking_id>
+ <start_date></start_date>
+ <due_date></due_date>
+ <customer_id></customer_id>
+</booking>
+<booking>
+ <booking_id>13</booking_id>
+ <start_date></start_date>
+ <due_date></due_date>
+ <customer_id>18</customer_id>
+</booking>
+<booking>
+ <booking_id>14</booking_id>
+ <start_date></start_date>
+ <due_date></due_date>
+ <customer_id></customer_id>
+</booking>
+<booking>
+ <booking_id>15</booking_id>
+ <start_date></start_date>
+ <due_date></due_date>
+ <customer_id>16</customer_id>
+</booking>
+<booking>
+ <booking_id>16</booking_id>
+ <start_date></start_date>
+ <due_date></due_date>
+ <customer_id></customer_id>
+</booking>
+<booking>
+ <booking_id>17</booking_id>
+ <start_date></start_date>
+ <due_date></due_date>
+ <customer_id></customer_id>
+</booking>
+<booking>
+ <booking_id>18</booking_id>
+ <start_date>2018-01-16</start_date>
+ <due_date>2018-01-18</due_date>
+ <customer_id></customer_id>
+</booking>
+<booking>
+ <booking_id>19</booking_id>
+ <start_date>2018-01-17</start_date>
+ <due_date>2018-01-19</due_date>
+ <customer_id></customer_id>
+</booking>
+<booking>
+ <booking_id>20</booking_id>
+ <start_date></start_date>
+ <due_date></due_date>
+ <customer_id></customer_id>
+</booking>
+<booking>
+ <booking_id>21</booking_id>
+ <start_date></start_date>
+ <due_date></due_date>
+ <customer_id></customer_id>
+</booking>

@@ -1,0 +1,48 @@
+<?php
+/*
+Plugin Name: PCA Job Booking
+*/
+/**
+ * Created by PhpStorm.
+ * User: Luke
+ * Date: 30/11/2017
+ * Time: 18:24
+ */
+
+if(!defined('WPINC')){
+    die;
+}
+
+define('BASEPATH', __DIR__);
+define('PLUGIN_PATH', __FILE__ );
+define('SHORT_CODE_NAME', 'view_page');
+define('TABLE_VARIABLES', BASEPATH . '/core/config/variables.php');
+define('CAPABILITIES_SETTINGS', BASEPATH . '/core/config/capabilities.php');
+define('DELMITER', ',');
+
+//3 Main Contact
+// ShortCode
+// Ajax action
+// Action
+
+require BASEPATH . '/core/config/variables.php';
+
+require BASEPATH .'/core/helper/debug.php';
+
+require BASEPATH . '/core/config/capabilities.php';
+require BASEPATH . '/core/model/Database.php';
+
+require BASEPATH .'/core/helper/helper.php';
+require BASEPATH .'/core/helper/util.php';
+
+
+require BASEPATH . '/core/model/Model.php';
+require BASEPATH . '/core/helper/booking_handler.php';
+
+require BASEPATH . '/core/view/view.php';
+
+require BASEPATH. '/core/controller/controller.php';
+require (BASEPATH .'/core/controller/MainController.php');
+
+require BASEPATH . '/Plugin.php';
+$plugin = new Plugin();
